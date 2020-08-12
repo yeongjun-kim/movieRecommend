@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mvvm.movierecommend.viewModel.MainViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/fm_detail_iv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:setImage="@{viewModel.detailItem.poster_path}"
+                app:layout_constraintDimensionRatio="1:1.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="marquee"
+                android:text="@{viewModel.detailItem.title}"
+                android:hint="title"
+                android:singleLine="true"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_iv" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv_genre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:hint="genre"
+                app:setGenre="@{viewModel.detailItem.genre_ids}"
+                android:singleLine="true"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_title" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{viewModel.detailItem.release_date}"
+                android:hint="2020-02-20"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_genre" />
+
+            <RatingBar
+                android:id="@+id/fm_detail_rb"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:setRating="@{viewModel.detailItem.vote_average}"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_date" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="개요"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_rb" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv_overview"
+                android:text="@{viewModel.detailItem.overview}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv1" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="투표수: "
+                app:layout_constraintBottom_toBottomOf="@id/fm_detail_rb"
+                app:layout_constraintStart_toEndOf="@id/fm_detail_rb"
+                app:layout_constraintTop_toTopOf="@id/fm_detail_rb"
+                app:layout_constraintVertical_bias="0.7" />
+
+            <TextView
+                android:id="@+id/fm_detail_tv_vote_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Long.toString(viewModel.detailItem.vote_count)}"
+                android:hint="0"
+                app:layout_constraintBottom_toBottomOf="@id/fm_detail_tv2"
+                app:layout_constraintStart_toEndOf="@id/fm_detail_tv2"
+                app:layout_constraintTop_toTopOf="@id/fm_detail_tv2" />
+
+            <ImageView
+                android:id="@+id/fm_detail_iv_adult"
+                android:layout_width="59dp"
+                android:layout_height="59dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/fm_detail_iv"
+                app:layout_constraintEnd_toEndOf="@id/fm_detail_iv"
+                app:setAdult="@{viewModel.detailItem.adult}"
+                app:srcCompat="@drawable/icon_audlt" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

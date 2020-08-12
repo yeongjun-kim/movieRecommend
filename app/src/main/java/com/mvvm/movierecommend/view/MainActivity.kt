@@ -5,20 +5,24 @@ import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.mvvm.movierecommend.R
 import com.mvvm.movierecommend.repository.MovieRepository
 import com.mvvm.movierecommend.view.navigation.GenreFragment
 import com.mvvm.movierecommend.view.navigation.LikeFragment
 import com.mvvm.movierecommend.view.navigation.MainFragment
 import com.mvvm.movierecommend.view.navigation.SearchFragment
+import com.mvvm.movierecommend.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG: String = "fhrm"
     var mainFragment: Fragment = MainFragment()
     var searchFragment: Fragment = SearchFragment()
     var genreFragment: Fragment = GenreFragment()
     var likeFragment: Fragment = LikeFragment()
+
+
+
 
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -69,8 +73,8 @@ class MainActivity : AppCompatActivity() {
 
         initDefaultFragment()
 
-        MovieRepository().getMovieList()
-            .subscribe { Log.d(TAG, "MainActivity -onCreate(),    : ${it.results[0].title}") }
+        val mainViewModel = ViewModelProvider(this,
+            MainViewModel.Factory(application)).get(MainViewModel::class.java)
 
     }
 
@@ -78,6 +82,29 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.main_fl, mainFragment)
             .commit()
+    }
+
+
+    companion object{
+        val genreIdToString:Map<String,String> = mapOf("28" to "액션",
+            "12" to "모험",
+            "16" to "애니메이션",
+            "35" to "코미디",
+            "80" to "범죄",
+            "99" to "다큐멘터리",
+            "18" to "드라마",
+            "10751" to "가족",
+            "14" to "판타지",
+            "36" to "역사",
+            "27" to "공포",
+            "10402" to "음악",
+            "9648" to "미스터리",
+            "10749" to "로맨스",
+            "878" to "SF",
+            "10770" to "TV to 영화",
+            "53" to "스릴러",
+            "10752" to "전쟁",
+            "37" to "서부")
     }
 }
 

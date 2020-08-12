@@ -16,7 +16,13 @@
         android:id="@+id/fm_main_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:padding="@dimen/item_offset"
+        android:clipToPadding="false"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

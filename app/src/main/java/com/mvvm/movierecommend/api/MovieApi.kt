@@ -7,6 +7,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.QueryMap
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
+const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500"
 const val API_KEY = "ba064b392125ad11f445e1e675280b4a"
 
 
