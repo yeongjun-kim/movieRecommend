@@ -23,17 +23,22 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity(),MainViewModel.Factory(activity!!.application)).get(MainViewModel::class.java)
         binding.apply {
             lifecycleOwner = this@DetailFragment
             viewModel = mainViewModel
+            fm = this@DetailFragment
         }
         Log.d("fhrm", "DetailFragment -onActivityCreated(),    : ${mainViewModel.detailItem?.adult}")
     }
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fragmentManager?.popBackStack()
+    }
+
 }

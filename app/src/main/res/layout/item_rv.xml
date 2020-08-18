@@ -1,76 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/textview_radius"
-    android:padding="12dp">
+<layout>
 
-    <ImageView
-        android:id="@+id/item_rv_iv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="movieItem"
+            type="com.mvvm.movierecommend.model.MovieItem" />
+    </data>
 
-    <TextView
-        android:id="@+id/item_rv_tv_title"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ellipsize="marquee"
-        android:hint="title"
-        android:singleLine="true"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_rv_iv" />
+        android:background="@drawable/textview_radius"
+        android:padding="12dp">
 
-    <TextView
-        android:id="@+id/item_rv_tv_genre"
-        android:ellipsize="marquee"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:hint="genre"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
-        app:layout_constraintTop_toBottomOf="@id/item_rv_tv_title" />
-    <TextView
-        android:id="@+id/item_rv_tv_date"
-        app:layout_constraintTop_toBottomOf="@id/item_rv_tv_genre"
-        app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
-        android:layout_marginTop="4dp"
-        android:hint="2020-02-20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/item_rv_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:setRountImage="@{movieItem.poster_path}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RatingBar
-        android:id="@+id/item_rv_rb"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
-        app:layout_constraintTop_toBottomOf="@id/item_rv_tv_date" />
+        <TextView
+            android:id="@+id/item_rv_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ellipsize="marquee"
+            android:hint="title"
+            android:singleLine="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@{movieItem.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_rv_iv" />
 
-    <TextView
-        android:id="@+id/item_rv_tv_overview"
-        android:layout_width="0dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp"
-        android:ellipsize="end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
-        app:layout_constraintTop_toBottomOf="@id/item_rv_rb" />
+        <TextView
+            android:id="@+id/item_rv_tv_genre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:hint="genre"
+            app:setGenre="@{movieItem.genre_ids}"
+            android:singleLine="true"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_title" />
+
+        <TextView
+            android:id="@+id/item_rv_tv_date"
+            android:text="@{movieItem.release_date}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="2020-02-20"
+            app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_genre" />
+
+        <RatingBar
+            android:id="@+id/item_rv_rb"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            app:setRating="@{movieItem.vote_average}"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_date" />
+
+        <TextView
+            android:id="@+id/item_rv_tv_overview"
+            android:layout_width="0dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="8dp"
+            android:text="@{movieItem.overview}"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/item_rv_rb" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

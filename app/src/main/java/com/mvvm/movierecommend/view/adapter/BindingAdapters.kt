@@ -37,11 +37,24 @@ object BindingAdapters {
      */
     @JvmStatic
     @BindingAdapter("setImage")
-    fun setImage(imageView:ImageView, url:String){
+    fun setImage(imageView:ImageView, url:String?){
         Glide.with(imageView.context).load("${BASE_URL_IMAGE}${url}")
             .thumbnail(0.1f)
             .placeholder(R.drawable.icon_no_image)
 //            .apply(RequestOptions().circleCrop())
+            .into(imageView)
+    }
+
+    /**
+     * ImageView (Round)
+     */
+    @JvmStatic
+    @BindingAdapter("setRountImage")
+    fun setRoundImage(imageView:ImageView, url:String?){
+        Glide.with(imageView.context).load("${BASE_URL_IMAGE}${url}")
+            .thumbnail(0.1f)
+            .placeholder(R.drawable.icon_no_image)
+            .apply(RequestOptions().circleCrop())
             .into(imageView)
     }
 

@@ -17,7 +17,7 @@ class MovieItem(
     val title: String,
     val overview: String,
     val genre_ids: List<String>,
-    val poster_path: String,
+    val poster_path: String?,
     val adult: Boolean,
     val release_date: String,
     val popularity: Double,

@@ -1,5 +1,6 @@
 package com.mvvm.movierecommend.repository
 
+import android.util.Log
 import com.mvvm.movierecommend.api.API_KEY
 import com.mvvm.movierecommend.api.MovieApi
 import com.mvvm.movierecommend.model.MovieResponse
@@ -9,13 +10,15 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieRepository(val api: MovieApi = MovieApi) {
 
-    fun getMovieList(genre: Long = 0L): Observable<MovieResponse> {
+    fun getMovieList(page:Int,genre: Long = 0L): Observable<MovieResponse> {
         val param = mapOf(
             "sort_by" to "popularity.desc",
             "language" to "ko",
-            "page" to "1",
+            "page" to page.toString(),
             "api_key" to API_KEY
         )
+
+        Log.d("fhrm", "MovieRepository -getMovieList(),    page: ${page}")
         var observer =
             Observable.create<MovieResponse> { subscriber ->
                 val call = api.getMovieList(param)
@@ -29,4 +32,28 @@ class MovieRepository(val api: MovieApi = MovieApi) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    fun searchMovie(moveName:String="", page:Int = 1) : Observable<MovieResponse>{
+        val param = mapOf(
+            "api_key" to API_KEY,
+            "language" to "ko",
+            "query" to moveName,
+            "page" to page.toString()
+        )
+
+        var observer =
+                Observable.create<MovieResponse>{subscriber ->
+                    val call = api.searchMovie(param)
+                    val response = call.execute()
+                    val body = response.body()
+
+                    if(response.isSuccessful && body != null) subscriber.onNext(body)
+                }
+
+        return observer
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    }
+
 }

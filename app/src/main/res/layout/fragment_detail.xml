@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mvvm.movierecommend.viewModel.MainViewModel" />
+
+        <variable
+            name="fm"
+            type="com.mvvm.movierecommend.view.navigation.DetailFragment" />
     </data>
 
     <ScrollView
@@ -22,11 +27,11 @@
                 android:id="@+id/fm_detail_iv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:setImage="@{viewModel.detailItem.poster_path}"
                 app:layout_constraintDimensionRatio="1:1.5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{viewModel.detailItem.poster_path}" />
 
             <TextView
                 android:id="@+id/fm_detail_tv_title"
@@ -36,9 +41,9 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
                 android:ellipsize="marquee"
-                android:text="@{viewModel.detailItem.title}"
                 android:hint="title"
                 android:singleLine="true"
+                android:text="@{viewModel.detailItem.title}"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,20 +57,20 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
                 android:hint="genre"
-                app:setGenre="@{viewModel.detailItem.genre_ids}"
                 android:singleLine="true"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@id/fm_detail_tv_title"
                 app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
-                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_title" />
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_title"
+                app:setGenre="@{viewModel.detailItem.genre_ids}" />
 
             <TextView
                 android:id="@+id/fm_detail_tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{viewModel.detailItem.release_date}"
                 android:hint="2020-02-20"
+                android:text="@{viewModel.detailItem.release_date}"
                 app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_genre" />
 
@@ -74,10 +79,10 @@
                 style="@style/Widget.AppCompat.RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:setRating="@{viewModel.detailItem.vote_average}"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
-                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_date" />
+                app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_date"
+                app:setRating="@{viewModel.detailItem.vote_average}" />
 
             <TextView
                 android:id="@+id/fm_detail_tv1"
@@ -89,11 +94,11 @@
 
             <TextView
                 android:id="@+id/fm_detail_tv_overview"
-                android:text="@{viewModel.detailItem.overview}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
+                android:text="@{viewModel.detailItem.overview}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/fm_detail_tv_title"
                 app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
@@ -114,8 +119,8 @@
                 android:id="@+id/fm_detail_tv_vote_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Long.toString(viewModel.detailItem.vote_count)}"
                 android:hint="0"
+                android:text="@{Long.toString(viewModel.detailItem.vote_count)}"
                 app:layout_constraintBottom_toBottomOf="@id/fm_detail_tv2"
                 app:layout_constraintStart_toEndOf="@id/fm_detail_tv2"
                 app:layout_constraintTop_toTopOf="@id/fm_detail_tv2" />
@@ -130,6 +135,16 @@
                 app:layout_constraintEnd_toEndOf="@id/fm_detail_iv"
                 app:setAdult="@{viewModel.detailItem.adult}"
                 app:srcCompat="@drawable/icon_audlt" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="@{()-> fm.onDestroy()}"
+                android:src="@drawable/icon_back"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_iv"
+                app:layout_constraintTop_toTopOf="@id/fm_detail_iv" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
