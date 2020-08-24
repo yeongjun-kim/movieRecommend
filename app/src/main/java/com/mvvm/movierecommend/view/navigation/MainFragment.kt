@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mvvm.movierecommend.R
 import com.mvvm.movierecommend.view.MainActivity.Companion.MODE_MAIN
 import com.mvvm.movierecommend.view.adapter.ItemOffsetDecoration
 import com.mvvm.movierecommend.view.adapter.RvAdapter
@@ -40,6 +41,8 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
         mainViewModel =
             ViewModelProvider(requireActivity(),MainViewModel.Factory(activity!!.application))
                 .get(MainViewModel::class.java)
@@ -56,11 +59,8 @@ class MainFragment : Fragment() {
             override fun onClick(position: Int) {
                 mainViewModel.detailItem = rvAdapter.movieList[position]
                 activity?.supportFragmentManager?.beginTransaction()
-                    ?.setCustomAnimations(
-                        com.mvvm.movierecommend.R.anim.fade_in,
-                        com.mvvm.movierecommend.R.anim.fade_out
-                    )
-                    ?.replace(com.mvvm.movierecommend.R.id.main_fl, DetailFragment())
+                    ?.setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
+                    ?.replace(R.id.main_fl, DetailFragment())
                     ?.addToBackStack("mainFragment")
                     ?.commit()
             }

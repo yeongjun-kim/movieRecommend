@@ -21,41 +21,38 @@ class MainActivity : AppCompatActivity() {
     var genreFragment: Fragment = GenreFragment()
     var likeFragment: Fragment = LikeFragment()
 
-
-
-
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
                     supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
                         .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.main_fl, mainFragment)
+//                        .addToBackStack(null)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_search -> {
                     supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
                         .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.main_fl, searchFragment)
+//                        .addToBackStack(null)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_genre -> {
                     supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
                         .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.main_fl, genreFragment)
+                        .addToBackStack(null)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_like -> {
                     supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
                         .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.main_fl, likeFragment)
+                        .addToBackStack(null)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
@@ -67,7 +64,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
@@ -82,6 +78,11 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.main_fl, mainFragment)
             .commit()
+
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.main_fl, mainFragment)
+//            .addToBackStack(null)
+//            .commit()
     }
 
 

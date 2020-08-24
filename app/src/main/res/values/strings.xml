@@ -4,4 +4,13 @@
     <string name="title_search">검색</string>
     <string name="title_genre">장르</string>
     <string name="title_like">찜</string>
+    <string name="popularity_asc">popularity.asc</string>
+    <string name="popularity_desc">popularity.desc</string>
+    <string name="release_date_asc">release_date.asc</string>
+    <string name="release_date_desc">release_date.desc</string>
+    <string name="original_title_asc">original_title.asc</string>
+    <string name="original_title_desc">original_title.desc</string>
+    <string name="vote_average_asc">vote_average.asc</string>
+    <string name="vote_average_desc">vote_average.desc</string>
+
 </resources>

@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="movieItem"
             type="com.mvvm.movierecommend.model.MovieItem" />
@@ -18,11 +19,11 @@
             android:id="@+id/item_rv_iv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:setRountImage="@{movieItem.poster_path}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setRountImage="@{movieItem.poster_path}" />
 
         <TextView
             android:id="@+id/item_rv_tv_title"
@@ -30,11 +31,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:ellipsize="marquee"
-            android:hint="title"
+            android:hint="정보가 없어요 !"
             android:singleLine="true"
+            android:text="@{movieItem.title}"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="@{movieItem.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,21 +46,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
-            android:hint="genre"
-            app:setGenre="@{movieItem.genre_ids}"
+            android:hint="정보가 없어요 !"
             android:singleLine="true"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
-            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_title" />
+            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_title"
+            app:setGenre="@{movieItem.genre_ids}" />
 
         <TextView
             android:id="@+id/item_rv_tv_date"
-            android:text="@{movieItem.release_date}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:hint="2020-02-20"
+            android:hint="정보가 없어요 !"
+            android:text="@{movieItem.release_date}"
             app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
             app:layout_constraintTop_toBottomOf="@id/item_rv_tv_genre" />
 
@@ -67,21 +68,22 @@
             android:id="@+id/item_rv_rb"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
-            app:setRating="@{movieItem.vote_average}"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"
-            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_date" />
+            app:layout_constraintTop_toBottomOf="@id/item_rv_tv_date"
+            app:setRating="@{movieItem.vote_average}" />
 
         <TextView
             android:id="@+id/item_rv_tv_overview"
             android:layout_width="0dp"
             android:layout_height="62dp"
             android:layout_marginTop="8dp"
-            android:text="@{movieItem.overview}"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="8dp"
             android:ellipsize="end"
+            android:hint="정보가 없어요 !"
+            android:text="@{movieItem.overview}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_rv_tv_title"

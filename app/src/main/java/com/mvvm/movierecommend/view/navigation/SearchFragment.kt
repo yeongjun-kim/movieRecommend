@@ -42,6 +42,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         mainViewModel =
             ViewModelProvider(
                 requireActivity(),
@@ -53,8 +54,14 @@ class SearchFragment : Fragment() {
             rvAdapter.setList(newList)
         })
         initRv()
+
+        Log.d("fhrm", "SearchFragment -onViewCreated(),    here")
     }
 
+
+    fun searchMovie() {
+        mainViewModel.searchMovie(searchMovieName.value.toString())
+    }
 
     fun initRv() {
         rvAdapter.listener = object : RvAdapter.ClickListener {
@@ -77,7 +84,6 @@ class SearchFragment : Fragment() {
                     R.dimen.item_offset
                 )
             ) // GridLayout에서 Item간 Spacing 해주기 위함
-            mainViewModel.searchMovie(searchMovieName.value.toString())
             adapter = rvAdapter
         }
 

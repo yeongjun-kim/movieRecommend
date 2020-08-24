@@ -31,14 +31,9 @@ class DetailFragment : Fragment() {
             viewModel = mainViewModel
             fm = this@DetailFragment
         }
-        Log.d("fhrm", "DetailFragment -onActivityCreated(),    : ${mainViewModel.detailItem?.adult}")
     }
 
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        fragmentManager?.popBackStack()
+    fun finish(){
+        activity?.supportFragmentManager?.popBackStack()
     }
-
 }

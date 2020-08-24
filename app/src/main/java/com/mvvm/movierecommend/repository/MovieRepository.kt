@@ -18,7 +18,6 @@ class MovieRepository(val api: MovieApi = MovieApi) {
             "api_key" to API_KEY
         )
 
-        Log.d("fhrm", "MovieRepository -getMovieList(),    page: ${page}")
         var observer =
             Observable.create<MovieResponse> { subscriber ->
                 val call = api.getMovieList(param)

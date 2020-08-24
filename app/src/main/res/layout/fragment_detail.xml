@@ -141,7 +141,7 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:onClick="@{()-> fm.onDestroy()}"
+                android:onClick="@{()-> fm.finish()}"
                 android:src="@drawable/icon_back"
                 app:layout_constraintStart_toStartOf="@id/fm_detail_iv"
                 app:layout_constraintTop_toTopOf="@id/fm_detail_iv" />
