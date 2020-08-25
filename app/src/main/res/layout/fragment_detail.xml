@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <ImageView
                 android:id="@+id/fm_detail_iv"
                 android:layout_width="0dp"
@@ -33,11 +34,24 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:setImage="@{viewModel.detailItem.poster_path}" />
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fm_detail_la_like"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="@{() -> fm.onClickLike()}"
+                app:layout_constraintBottom_toBottomOf="@id/fm_detail_tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.00"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/fm_detail_tv_title"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="btn_favorite.json"
+                app:lottie_loop="false" />
+
             <TextView
                 android:id="@+id/fm_detail_tv_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
                 android:ellipsize="marquee"
@@ -47,20 +61,21 @@
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fm_detail_la_like"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_iv" />
+
 
             <TextView
                 android:id="@+id/fm_detail_tv_genre"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:ellipsize="marquee"
                 android:hint="genre"
                 android:singleLine="true"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@id/fm_detail_tv_title"
-                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_title"
                 app:setGenre="@{viewModel.detailItem.genre_ids}" />
 
@@ -71,7 +86,7 @@
                 android:layout_marginTop="4dp"
                 android:hint="2020-02-20"
                 android:text="@{viewModel.detailItem.release_date}"
-                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_genre"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_genre" />
 
             <RatingBar
@@ -80,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_genre"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_tv_date"
                 app:setRating="@{viewModel.detailItem.vote_average}" />
 
@@ -89,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="개요"
-                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_genre"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_rb" />
 
             <TextView
@@ -101,8 +116,9 @@
                 android:text="@{viewModel.detailItem.overview}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/fm_detail_tv_title"
-                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_title"
+                app:layout_constraintStart_toStartOf="@id/fm_detail_tv_genre"
                 app:layout_constraintTop_toBottomOf="@id/fm_detail_tv1" />
+
 
             <TextView
                 android:id="@+id/fm_detail_tv2"

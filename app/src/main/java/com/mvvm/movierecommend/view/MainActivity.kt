@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         val MODE_MAIN = 0
         val MODE_SEARCH = 1
+        val MODE_GENRE = 2
         val genreIdToString:Map<String,String> = mapOf("28" to "액션",
             "12" to "모험",
             "16" to "애니메이션",

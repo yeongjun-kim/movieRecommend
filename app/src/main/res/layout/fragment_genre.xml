@@ -14,370 +14,366 @@
             type="com.mvvm.movierecommend.view.navigation.GenreFragment" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/test"
+        <TextView
+            android:id="@+id/fm_genre_temp_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textview_radius"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Genre"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.01" />
+
+        <ImageButton
+            android:id="@+id/fm_genre_iv_arrow_genre"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:onClick="@{()-> fm.isGenreVisibility()}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/fm_genre_temp_genre"
+            app:layout_constraintStart_toEndOf="@id/fm_genre_temp_genre"
+            app:layout_constraintTop_toTopOf="@id/fm_genre_temp_genre"
+            app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fm_cl_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fm_genre_temp_genre">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onCheckedChanged="@{()-> fm.setGenre(12)}"
+                android:text="모험"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fm_genre_temp_genre"
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/textview_radius"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Genre"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.03" />
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(16)}"
+                android:text="애니메이션"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_12"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_12" />
 
-            <ImageButton
-                android:id="@+id/fm_genre_iv_arrow_genre"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="5dp"
-                android:background="@android:color/transparent"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="@id/fm_genre_temp_genre"
-                app:layout_constraintStart_toEndOf="@id/fm_genre_temp_genre"
-                app:layout_constraintTop_toTopOf="@id/fm_genre_temp_genre"
-                app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fm_cl_genre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fm_genre_temp_genre">
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onCheckedChanged="@{()-> fm.setGenre(12)}"
-                    android:text="모험"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(16)}"
-                    android:text="애니메이션"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_12"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_12" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_35"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(35)}"
-                    android:text="코미디"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_16"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_16" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_80"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(80)}"
-                    android:text="범죄"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_35"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_35" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_99"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onCheckedChanged="@{()-> fm.setGenre(99)}"
-                    android:text="다큐멘터리"
-                    app:layout_constraintStart_toStartOf="@id/fm_genre_cb_12"
-                    app:layout_constraintTop_toBottomOf="@id/fm_genre_cb_12" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(18)}"
-                    android:text="드라마"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_99"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_99" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_10751"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(10751)}"
-                    android:text="가족"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_18"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_18" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(14)}"
-                    android:text="판타지"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10751"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10751" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_36"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onCheckedChanged="@{()-> fm.setGenre(36)}"
-                    android:text="역사"
-                    app:layout_constraintStart_toStartOf="@id/fm_genre_cb_99"
-                    app:layout_constraintTop_toBottomOf="@id/fm_genre_cb_99" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_27"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(27)}"
-                    android:text="공포"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_36"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_36" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_10402"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(10402)}"
-                    android:text="음악"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_27"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_27" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_9648"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(9648)}"
-                    android:text="미스터리"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10402"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10402" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_10749"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(10749)}"
-                    android:text="로맨스"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_9648"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_9648" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_878"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onCheckedChanged="@{()-> fm.setGenre(878)}"
-                    android:text="SF"
-                    app:layout_constraintStart_toStartOf="@id/fm_genre_cb_36"
-                    app:layout_constraintTop_toBottomOf="@id/fm_genre_cb_36" />
-
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_10770"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(10770)}"
-                    android:text="TV to 영화"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_878"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_878" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_53"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(53)}"
-                    android:text="스릴러"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10770"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10770" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_10752"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(10752)}"
-                    android:text="전쟁"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_53"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_53" />
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/fm_genre_cb_37"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:onCheckedChanged="@{()-> fm.setGenre(37)}"
-                    android:text="서부"
-                    app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10752"
-                    app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10752" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/fm_genre_temp_sort"
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_35"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/textview_radius"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Sort Results By"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@id/fm_genre_temp_genre"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.533"
-                app:layout_constraintStart_toEndOf="@id/fm_genre_temp_genre"
-                app:layout_constraintTop_toTopOf="@id/fm_genre_temp_genre"
-                app:layout_constraintVertical_bias="1.0" />
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(35)}"
+                android:text="코미디"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_16"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_16" />
 
-            <ImageButton
-                android:id="@+id/fm_genre_iv_arrow_sort"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="5dp"
-                android:background="@android:color/transparent"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="@id/fm_genre_temp_sort"
-                app:layout_constraintStart_toEndOf="@id/fm_genre_temp_sort"
-                app:layout_constraintTop_toTopOf="@id/fm_genre_temp_sort"
-                app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fm_cl_sort"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_80"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fm_cl_genre">
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(80)}"
+                android:text="범죄"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_35"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_35" />
 
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_popularity_asc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/popularity_asc)}"
-                        android:text="인기도 오름차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_popularity_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/popularity_desc)}"
-                        android:text="인기도 내림차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_release_date_asc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/release_date_asc)}"
-                        android:text="상영일 오름차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_release_date_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/release_date_desc)}"
-                        android:text="상영일 내림차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_original_title_asc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/original_title_asc)}"
-                        android:text="제목 오름차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_original_title_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/original_title_desc)}"
-                        android:text="제목 내림차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_vote_average_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/vote_average_asc)}"
-                        android:text="평점 오름차순" />
-
-                    <RadioButton
-                        android:id="@+id/fm_genre_rb_vote_average_asc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fm.setSort(@string/vote_average_desc)}"
-                        android:text="평점 내림차순" />
-                </RadioGroup>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <Button
-                android:id="@+id/fm_genre_btn_search"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_99"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/button_radius"
-                android:text="검 색"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fm_cl_sort" />
+                android:onCheckedChanged="@{()-> fm.setGenre(99)}"
+                android:text="다큐멘터리"
+                app:layout_constraintStart_toStartOf="@id/fm_genre_cb_12"
+                app:layout_constraintTop_toBottomOf="@id/fm_genre_cb_12" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fm_genre_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fm_genre_btn_search">
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(18)}"
+                android:text="드라마"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_99"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_99" />
 
-            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_10751"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(10751)}"
+                android:text="가족"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_18"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_18" />
 
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(14)}"
+                android:text="판타지"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10751"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10751" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{()-> fm.setGenre(36)}"
+                android:text="역사"
+                app:layout_constraintStart_toStartOf="@id/fm_genre_cb_99"
+                app:layout_constraintTop_toBottomOf="@id/fm_genre_cb_99" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(27)}"
+                android:text="공포"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_36"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_36" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_10402"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(10402)}"
+                android:text="음악"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_27"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_27" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_9648"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(9648)}"
+                android:text="미스터리"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10402"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10402" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_10749"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(10749)}"
+                android:text="로맨스"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_9648"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_9648" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_878"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{()-> fm.setGenre(878)}"
+                android:text="SF"
+                app:layout_constraintStart_toStartOf="@id/fm_genre_cb_36"
+                app:layout_constraintTop_toBottomOf="@id/fm_genre_cb_36" />
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_10770"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(10770)}"
+                android:text="TV to 영화"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_878"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_878" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_53"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(53)}"
+                android:text="스릴러"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10770"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10770" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_10752"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(10752)}"
+                android:text="전쟁"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_53"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_53" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/fm_genre_cb_37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:onCheckedChanged="@{()-> fm.setGenre(37)}"
+                android:text="서부"
+                app:layout_constraintStart_toEndOf="@id/fm_genre_cb_10752"
+                app:layout_constraintTop_toTopOf="@id/fm_genre_cb_10752" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/fm_genre_temp_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/textview_radius"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Sort Results By"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/fm_genre_temp_genre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toEndOf="@id/fm_genre_temp_genre"
+            app:layout_constraintTop_toTopOf="@id/fm_genre_temp_genre"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/fm_genre_iv_arrow_sort"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:onClick="@{()->fm.isSortVisibility()}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/fm_genre_temp_sort"
+            app:layout_constraintStart_toEndOf="@id/fm_genre_temp_sort"
+            app:layout_constraintTop_toTopOf="@id/fm_genre_temp_sort"
+            app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fm_cl_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fm_cl_genre">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_popularity_asc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/popularity_asc)}"
+                    android:text="인기도 오름차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_popularity_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/popularity_desc)}"
+                    android:text="인기도 내림차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_release_date_asc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/release_date_asc)}"
+                    android:text="상영일 오름차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_release_date_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/release_date_desc)}"
+                    android:text="상영일 내림차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_original_title_asc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/original_title_asc)}"
+                    android:text="제목 오름차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_original_title_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/original_title_desc)}"
+                    android:text="제목 내림차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_vote_average_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/vote_average_asc)}"
+                    android:text="평점 오름차순" />
+
+                <RadioButton
+                    android:id="@+id/fm_genre_rb_vote_average_asc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fm.setSort(@string/vote_average_desc)}"
+                    android:text="평점 내림차순" />
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/fm_genre_btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_radius"
+            android:onClick="@{()-> fm.getGenreMovie()}"
+            android:text="검 색"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fm_cl_sort" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fm_genre_rv"
+            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fm_genre_btn_search">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -27,14 +27,11 @@ class SearchFragment : Fragment() {
     var rvAdapter = RvAdapter()
     var searchMovieName: MutableLiveData<String> = MutableLiveData("")
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         binding.apply {
             fm = this@SearchFragment
+            lifecycleOwner = this@SearchFragment
         }
         rv = binding.fmSearchRv
         return binding.root
@@ -54,8 +51,6 @@ class SearchFragment : Fragment() {
             rvAdapter.setList(newList)
         })
         initRv()
-
-        Log.d("fhrm", "SearchFragment -onViewCreated(),    here")
     }
 
 
@@ -66,8 +61,7 @@ class SearchFragment : Fragment() {
     fun initRv() {
         rvAdapter.listener = object : RvAdapter.ClickListener {
             override fun onClick(position: Int) {
-                mainViewModel.detailItem = rvAdapter.movieList[position]
-
+                mainViewModel.setdetailItem(rvAdapter.movieList[position])
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     ?.replace(R.id.main_fl, DetailFragment())?.addToBackStack("searchFragment")

@@ -57,7 +57,7 @@ class MainFragment : Fragment() {
     private fun initRv() {
         rvAdapter.listener = object : RvAdapter.ClickListener {
             override fun onClick(position: Int) {
-                mainViewModel.detailItem = rvAdapter.movieList[position]
+                mainViewModel.setdetailItem(rvAdapter.movieList[position])
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
                     ?.replace(R.id.main_fl, DetailFragment())

@@ -10,13 +10,37 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieRepository(val api: MovieApi = MovieApi) {
 
-    fun getMovieList(page:Int,genre: Long = 0L): Observable<MovieResponse> {
+    fun getMovieList(page:Int): Observable<MovieResponse> {
         val param = mapOf(
             "sort_by" to "popularity.desc",
             "language" to "ko",
             "page" to page.toString(),
             "api_key" to API_KEY
         )
+
+        var observer =
+            Observable.create<MovieResponse> { subscriber ->
+                val call = api.getMovieList(param)
+                val respnose = call.execute()
+                val body = respnose.body()
+
+                if (respnose.isSuccessful && body != null) subscriber.onNext(body)
+            }
+
+        return observer
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun getGenreMovieList(page:Int,genre: String?,sortBy:String): Observable<MovieResponse> {
+        val param = mutableMapOf(
+            "sort_by" to sortBy,
+            "language" to "ko",
+            "page" to page.toString(),
+            "api_key" to API_KEY
+        )
+        if(!genre.isNullOrBlank())param["with_genres"] = genre
+
 
         var observer =
             Observable.create<MovieResponse> { subscriber ->
