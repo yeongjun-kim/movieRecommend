@@ -91,6 +91,7 @@
 
             <RatingBar
                 android:id="@+id/fm_detail_rb"
+                android:isIndicator="true"
                 style="@style/Widget.AppCompat.RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

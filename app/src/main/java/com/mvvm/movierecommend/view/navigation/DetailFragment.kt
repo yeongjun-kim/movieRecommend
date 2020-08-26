@@ -19,19 +19,12 @@ class DetailFragment : Fragment() {
     lateinit var mainViewModel: MainViewModel
     lateinit var binding: FragmentDetailBinding
     var animator = ValueAnimator()
-    var toggle = false
+    var isConstain = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
-
-
-        binding.fmDetailLaLike.setOnClickListener {
-            onClickLike()
-        }
-
-
 
         return binding.root
     }
@@ -49,12 +42,11 @@ class DetailFragment : Fragment() {
         }
 
         mainViewModel.getAll().observe(this, Observer {
-            if(it.contains(mainViewModel.detailITemToFavoriteMovieItem)){ // 좋아요 눌려있다면
+            var temp = it.find { a -> a.id == mainViewModel.detailITemToFavoriteMovieItem?.id }
+            isConstain = temp != null
 
-            }
-            else{ //좋아요 안눌려있다면
-
-            }
+            if (isConstain) setLottie(0.5f)
+            else setLottie(0.0f)
         })
     }
 
@@ -62,13 +54,25 @@ class DetailFragment : Fragment() {
         activity?.supportFragmentManager?.popBackStack()
     }
 
-    fun onClickLike(){
-        animator = ValueAnimator.ofFloat(0f, 1f).setDuration(1000)
-        animator.addUpdateListener { animation->
+    fun setLottie(startEnd: Float) {
+        animator = ValueAnimator.ofFloat(startEnd, startEnd).setDuration(0)
+        animator.addUpdateListener { animation ->
             binding.fmDetailLaLike.progress = animation.animatedValue as Float
         }
         animator.start()
-        mainViewModel.insert()
-//        mainViewModel.delete()
+    }
+
+    fun onClickLike() {
+        var start = if (isConstain) 0.5f else 0f
+        var end = if (isConstain) 1f else 0.5f
+
+        animator = ValueAnimator.ofFloat(start, end).setDuration(1000)
+        animator.addUpdateListener { animation ->
+            binding.fmDetailLaLike.progress = animation.animatedValue as Float
+        }
+        animator.start()
+
+        if (isConstain) mainViewModel.delete()
+        else mainViewModel.insert()
     }
 }
