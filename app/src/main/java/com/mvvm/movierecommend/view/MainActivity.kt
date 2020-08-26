@@ -69,8 +69,10 @@ class MainActivity : AppCompatActivity() {
 
         initDefaultFragment()
 
-        val mainViewModel = ViewModelProvider(this,
-            MainViewModel.Factory(application)).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(
+            this,
+            MainViewModel.Factory(application)
+        ).get(MainViewModel::class.java)
 
     }
 
@@ -86,11 +88,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    companion object{
+    companion object {
         val MODE_MAIN = 0
         val MODE_SEARCH = 1
         val MODE_GENRE = 2
-        val genreIdToString:Map<String,String> = mapOf("28" to "액션",
+        val genreIdToString: Map<String, String> = mapOf(
+            "28" to "액션",
             "12" to "모험",
             "16" to "애니메이션",
             "35" to "코미디",
@@ -108,7 +111,8 @@ class MainActivity : AppCompatActivity() {
             "10770" to "TV to 영화",
             "53" to "스릴러",
             "10752" to "전쟁",
-            "37" to "서부")
+            "37" to "서부"
+        )
     }
 }
 

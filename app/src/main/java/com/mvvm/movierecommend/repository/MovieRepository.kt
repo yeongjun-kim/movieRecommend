@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieRepository(val api: MovieApi = MovieApi) {
 
-    fun getMovieList(page:Int): Observable<MovieResponse> {
+    fun getMovieList(page: Int): Observable<MovieResponse> {
         val param = mapOf(
             "sort_by" to "popularity.desc",
             "language" to "ko",
@@ -32,14 +32,14 @@ class MovieRepository(val api: MovieApi = MovieApi) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getGenreMovieList(page:Int,genre: String?,sortBy:String): Observable<MovieResponse> {
+    fun getGenreMovieList(page: Int, genre: String?, sortBy: String): Observable<MovieResponse> {
         val param = mutableMapOf(
             "sort_by" to sortBy,
             "language" to "ko",
             "page" to page.toString(),
             "api_key" to API_KEY
         )
-        if(!genre.isNullOrBlank())param["with_genres"] = genre
+        if (!genre.isNullOrBlank()) param["with_genres"] = genre
 
 
         var observer =
@@ -56,7 +56,7 @@ class MovieRepository(val api: MovieApi = MovieApi) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun searchMovie(moveName:String="", page:Int = 1) : Observable<MovieResponse>{
+    fun searchMovie(moveName: String = "", page: Int = 1): Observable<MovieResponse> {
         val param = mapOf(
             "api_key" to API_KEY,
             "language" to "ko",
@@ -65,13 +65,13 @@ class MovieRepository(val api: MovieApi = MovieApi) {
         )
 
         var observer =
-                Observable.create<MovieResponse>{subscriber ->
-                    val call = api.searchMovie(param)
-                    val response = call.execute()
-                    val body = response.body()
+            Observable.create<MovieResponse> { subscriber ->
+                val call = api.searchMovie(param)
+                val response = call.execute()
+                val body = response.body()
 
-                    if(response.isSuccessful && body != null) subscriber.onNext(body)
-                }
+                if (response.isSuccessful && body != null) subscriber.onNext(body)
+            }
 
         return observer
             .subscribeOn(Schedulers.io())

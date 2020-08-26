@@ -27,7 +27,11 @@ class SearchFragment : Fragment() {
     var rvAdapter = RvAdapter()
     var searchMovieName: MutableLiveData<String> = MutableLiveData("")
 
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         binding.apply {
             fm = this@SearchFragment

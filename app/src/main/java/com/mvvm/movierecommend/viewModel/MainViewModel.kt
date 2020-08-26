@@ -61,17 +61,32 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun setdetailItem(inputMovieItem:MovieItem){
+    fun setdetailItem(inputMovieItem: MovieItem) {
         detailItem = inputMovieItem
         detailITemToFavoriteMovieItem = movieItemToFavoriteMovieItem(inputMovieItem)
     }
 
-    fun movieItemToFavoriteMovieItem(input:MovieItem):FavoriteMovieItem{
+    fun movieItemToFavoriteMovieItem(input: MovieItem): FavoriteMovieItem {
         return FavoriteMovieItem(
             input.id,
             input.title,
             input.overview,
             input.genre_ids.joinToString(","),
+            input.poster_path,
+            input.adult,
+            input.release_date,
+            input.popularity,
+            input.vote_average,
+            input.vote_count
+        )
+    }
+
+    fun favoriteMovieItemToMovieItem(input: FavoriteMovieItem): MovieItem {
+        return MovieItem(
+            input.id,
+            input.title,
+            input.overview,
+            input.genre_ids.split(','),
             input.poster_path,
             input.adult,
             input.release_date,

@@ -6,15 +6,17 @@
 
         <variable
             name="fm"
-            type="com.mvvm.movierecommend.view.navigation.MainFragment" />
+            type="com.mvvm.movierecommend.view.navigation.LikeFragment" />
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/fm_main_temp"
+            android:id="@+id/fm_like_temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -24,7 +26,7 @@
             android:gravity="center"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            android:text="인기 영화"
+            android:text="내가 찜한 영화들"
             android:textColor="#61799E"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fm_main_rv"
+            android:id="@+id/fm_like_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -43,8 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fm_main_temp" />
-
+            app:layout_constraintTop_toBottomOf="@+id/fm_like_temp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -68,11 +68,10 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.CustomViewHolder>() {
                 notifyDataSetChanged()
             }
         movieList = newList
-
-
     }
 
-    class CustomViewHolder(val binding: ItemRvBinding, val listener: ClickListener?) :RecyclerView.ViewHolder(binding.root) {
+    class CustomViewHolder(val binding: ItemRvBinding, val listener: ClickListener?) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener { listener?.onClick(adapterPosition) }

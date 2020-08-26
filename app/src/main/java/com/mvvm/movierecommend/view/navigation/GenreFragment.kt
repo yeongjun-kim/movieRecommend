@@ -29,14 +29,18 @@ class GenreFragment : Fragment() {
 
     lateinit var binding: FragmentGenreBinding
     lateinit var mainViewModel: MainViewModel
-    lateinit var rv:RecyclerView
+    lateinit var rv: RecyclerView
     var rvAdapter = RvAdapter()
 
     var genreList = arrayListOf<String>()
     var sortBy = "popularity.desc"
 
 
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_genre, container, false)
         binding.apply {
@@ -50,8 +54,9 @@ class GenreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel =ViewModelProvider(requireActivity(), MainViewModel.Factory(activity!!.application))
-            .get(MainViewModel::class.java)
+        mainViewModel =
+            ViewModelProvider(requireActivity(), MainViewModel.Factory(activity!!.application))
+                .get(MainViewModel::class.java)
 
         mainViewModel.genreLiveMovieList.observe(this, Observer { newList ->
             rvAdapter.setList(newList)
@@ -61,8 +66,7 @@ class GenreFragment : Fragment() {
     }
 
 
-
-    fun initRv(){
+    fun initRv() {
         rvAdapter.listener = object : RvAdapter.ClickListener {
             override fun onClick(position: Int) {
                 mainViewModel.setdetailItem(rvAdapter.movieList[position])
@@ -77,7 +81,12 @@ class GenreFragment : Fragment() {
         rv.run {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(activity, 2)
-            addItemDecoration(ItemOffsetDecoration(context,R.dimen.item_offset)) // GridLayout에서 Item간 Spacing 해주기 위함
+            addItemDecoration(
+                ItemOffsetDecoration(
+                    context,
+                    R.dimen.item_offset
+                )
+            ) // GridLayout에서 Item간 Spacing 해주기 위함
             adapter = rvAdapter
         }
 
@@ -102,22 +111,22 @@ class GenreFragment : Fragment() {
         mainViewModel.getGenreMovieList(true)
     }
 
-    fun setGenre(num:Int){
-        if(genreList.contains(num.toString())) genreList.remove(num.toString())
+    fun setGenre(num: Int) {
+        if (genreList.contains(num.toString())) genreList.remove(num.toString())
         else genreList.add(num.toString())
     }
 
-    fun setSort(insertString:String){
+    fun setSort(insertString: String) {
         sortBy = insertString
     }
 
-    fun isGenreVisibility(){
-        if(binding.fmClGenre.visibility == View.VISIBLE) binding.fmClGenre.visibility = View.GONE
+    fun isGenreVisibility() {
+        if (binding.fmClGenre.visibility == View.VISIBLE) binding.fmClGenre.visibility = View.GONE
         else binding.fmClGenre.visibility = View.VISIBLE
     }
 
-    fun isSortVisibility(){
-        if(binding.fmClSort.visibility == View.VISIBLE) binding.fmClSort.visibility = View.GONE
+    fun isSortVisibility() {
+        if (binding.fmClSort.visibility == View.VISIBLE) binding.fmClSort.visibility = View.GONE
         else binding.fmClSort.visibility = View.VISIBLE
     }
 
