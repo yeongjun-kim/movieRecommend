@@ -2,10 +2,8 @@ package com.mvvm.movierecommend.viewModel
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.graphics.Movie
 import android.util.Log
 import androidx.lifecycle.*
-import com.mvvm.movierecommend.api.MovieApi.getMovieList
 import com.mvvm.movierecommend.model.FavoriteMovieItem
 import com.mvvm.movierecommend.model.MovieItem
 import com.mvvm.movierecommend.repository.FavoriteMovieRepository
@@ -53,6 +51,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var movieRepository = MovieRepository()
     var detailItem: MovieItem? = null
     var detailITemToFavoriteMovieItem: FavoriteMovieItem? = null
+    var test = false
 
     init {
         mFavoriteMovieRepository = FavoriteMovieRepository(application)

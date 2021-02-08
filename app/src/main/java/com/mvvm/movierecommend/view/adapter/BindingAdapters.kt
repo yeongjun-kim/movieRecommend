@@ -1,11 +1,9 @@
 package com.mvvm.movierecommend.view.adapter
 
-import android.media.Rating
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -19,8 +17,8 @@ object BindingAdapters {
      */
     @JvmStatic
     @BindingAdapter("setRating")
-    fun setRating(ratingBar: RatingBar, double:Double){
-        ratingBar.rating = (double/2).toFloat()
+    fun setRating(ratingBar: RatingBar, double: Double) {
+        ratingBar.rating = (double / 2).toFloat()
     }
 
     /**
@@ -28,7 +26,7 @@ object BindingAdapters {
      */
     @JvmStatic
     @BindingAdapter("setGenre")
-    fun setGenre(textView:TextView, id:List<String>){
+    fun setGenre(textView: TextView, id: List<String>) {
         textView.text = id.map { id -> genreIdToString[id] }.joinToString(",")
     }
 
@@ -37,7 +35,7 @@ object BindingAdapters {
      */
     @JvmStatic
     @BindingAdapter("setImage")
-    fun setImage(imageView:ImageView, url:String?){
+    fun setImage(imageView: ImageView, url: String?) {
         Glide.with(imageView.context).load("${BASE_URL_IMAGE}${url}")
             .thumbnail(0.1f)
             .placeholder(R.drawable.icon_no_image)
@@ -50,7 +48,7 @@ object BindingAdapters {
      */
     @JvmStatic
     @BindingAdapter("setRountImage")
-    fun setRoundImage(imageView:ImageView, url:String?){
+    fun setRoundImage(imageView: ImageView, url: String?) {
         Glide.with(imageView.context).load("${BASE_URL_IMAGE}${url}")
             .thumbnail(0.1f)
             .placeholder(R.drawable.icon_no_image)
@@ -63,7 +61,7 @@ object BindingAdapters {
      */
     @JvmStatic
     @BindingAdapter("setAdult")
-    fun setAdult(imageView:ImageView, isAdult:Boolean){
-        if(isAdult) imageView.visibility = View.VISIBLE else imageView.visibility = View.GONE
+    fun setAdult(imageView: ImageView, isAdult: Boolean) {
+        if (isAdult) imageView.visibility = View.VISIBLE else imageView.visibility = View.GONE
     }
 }

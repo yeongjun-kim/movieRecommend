@@ -1,6 +1,5 @@
 package com.mvvm.movierecommend.repository
 
-import android.util.Log
 import com.mvvm.movierecommend.api.API_KEY
 import com.mvvm.movierecommend.api.MovieApi
 import com.mvvm.movierecommend.model.MovieResponse

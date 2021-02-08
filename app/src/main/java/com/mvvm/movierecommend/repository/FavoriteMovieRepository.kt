@@ -1,7 +1,6 @@
 package com.mvvm.movierecommend.repository
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.mvvm.movierecommend.model.FavoriteMovieDao
 import com.mvvm.movierecommend.model.FavoriteMovieDatabase

@@ -1,28 +1,21 @@
 package com.mvvm.movierecommend.view.navigation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mvvm.movierecommend.R
 import com.mvvm.movierecommend.databinding.FragmentGenreBinding
-import com.mvvm.movierecommend.view.MainActivity
 import com.mvvm.movierecommend.view.MainActivity.Companion.MODE_GENRE
 import com.mvvm.movierecommend.view.adapter.ItemOffsetDecoration
 import com.mvvm.movierecommend.view.adapter.RvAdapter
 import com.mvvm.movierecommend.viewModel.MainViewModel
-import kotlinx.android.synthetic.main.fragment_genre.*
 
 
 class GenreFragment : Fragment() {

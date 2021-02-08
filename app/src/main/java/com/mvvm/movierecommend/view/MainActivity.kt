@@ -1,13 +1,11 @@
 package com.mvvm.movierecommend.view
 
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mvvm.movierecommend.R
-import com.mvvm.movierecommend.repository.MovieRepository
 import com.mvvm.movierecommend.view.navigation.GenreFragment
 import com.mvvm.movierecommend.view.navigation.LikeFragment
 import com.mvvm.movierecommend.view.navigation.MainFragment

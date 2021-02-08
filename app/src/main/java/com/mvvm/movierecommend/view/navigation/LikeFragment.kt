@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mvvm.movierecommend.R
 import com.mvvm.movierecommend.databinding.FragmentLikeBinding
-import com.mvvm.movierecommend.view.MainActivity
 import com.mvvm.movierecommend.view.adapter.ItemOffsetDecoration
 import com.mvvm.movierecommend.view.adapter.RvAdapter
 import com.mvvm.movierecommend.viewModel.MainViewModel
@@ -47,7 +45,6 @@ class LikeFragment : Fragment() {
         })
 
         initRv()
-
     }
 
     private fun initRv() {

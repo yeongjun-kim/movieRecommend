@@ -12,7 +12,7 @@ const val API_KEY = "ba064b392125ad11f445e1e675280b4a"
 
 
 object MovieApi {
-    private val movieService:MovieService
+    private val movieService: MovieService
 
     init {
         val gson = GsonBuilder().setLenient().create()

@@ -2,7 +2,6 @@ package com.mvvm.movierecommend.view.navigation
 
 import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +47,7 @@ class DetailFragment : Fragment() {
             if (isConstain) setLottie(0.5f)
             else setLottie(0.0f)
         })
+
     }
 
     fun finish() {

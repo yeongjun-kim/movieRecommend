@@ -1,29 +1,17 @@
 package com.mvvm.movierecommend.view.adapter
 
 import android.annotation.SuppressLint
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.mvvm.movierecommend.R
-import com.mvvm.movierecommend.api.BASE_URL
-import com.mvvm.movierecommend.api.BASE_URL_IMAGE
 import com.mvvm.movierecommend.databinding.ItemRvBinding
 import com.mvvm.movierecommend.model.MovieItem
-import com.mvvm.movierecommend.view.MainActivity.Companion.genreIdToString
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.item_rv.view.*
-import java.util.*
-import kotlin.collections.ArrayList
 
 class RvAdapter : RecyclerView.Adapter<RvAdapter.CustomViewHolder>() {
 
@@ -79,7 +67,7 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.CustomViewHolder>() {
 
         fun bind(item: MovieItem) {
             binding.apply {
-                itemRvTvTitle.isSelected = true
+                itemRvTvTitle.isSelected = true // TextView 흐르는 효과
                 movieItem = item
             }
         }
